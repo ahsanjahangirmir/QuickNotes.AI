@@ -1,2 +1,21 @@
-# QuickNotes.AI
-Browser Extension Development: A simple note-taking sidebar integrated with an AI summarizer. Tap the button to get a summary for the current website while making notes on the go.
+## QuickNotes.AI
+
+# Project Description
+
+A simple note-taking Chrome extension with an intuitive UI, integrated with the Gemini API for summarizing the current webpage at the click of a button and appending the summary to your notes. Built with Vanilla JS. Since Google has tightened the content security policies with the Manifest V3, Gemini REST API is used instead of the Module API. If you run into any unexpected behavior/issues, reload the webpage. 
+
+# Preview
+
+<img width="1710" alt="image" src="https://github.com/ahsanjahangirmir/QuickNotes.AI/assets/65661108/4a12ce86-0802-4e17-b04a-56359b6a376e">
+
+# Instructions: 
+
+- Browse to https://ai.google.dev/gemini-api/docs/api-key and generate an API key for Gemini.
+- Download the QuickNotes.AI folder from this repo and unzip it. 
+- Navigate to "sidebar.js" in the QuickNotes.AI folder. Go to line 7 (window.GEMINI_API_KEY = "your_api_key_goes_here";) and paste your API key in the placeholder. Save and close the file.
+- Open Google Chrome on your PC and navigate to chrome://extensions/
+- Look for the "Load Unpacked" button in the top left corner, select and browse to where the folder is located on your PC and open it. The extension will be loaded into your browser.
+
+<img width="355" alt="image" src="https://github.com/ahsanjahangirmir/QuickNotes.AI/assets/65661108/4fbe1d51-aa87-4470-8877-af394f90e747">
+
+Pin the extension once loaded and press to load the sidebar. 
