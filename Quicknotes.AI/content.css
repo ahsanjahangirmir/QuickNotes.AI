@@ -1,0 +1,360 @@
+#quicknotes-sidebar {
+  position: fixed;
+  top: 5vh;
+  right: 0;
+  width: 25vw;
+  height: 90vh;
+  background: rgba(31, 31, 31, 0.75);
+  backdrop-filter: blur(5px);
+  color: rgb(253, 253, 253);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: -2px 0 50px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  border-top-left-radius: 15px; 
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+#quicknotes-sidebar.show {
+  transform: translateX(0);
+}
+
+#quicknotes-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#input_text {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+#btn_gemini {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #4caf4f7c;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#result_text {
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+
+#quicknotes-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.circle-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #707070;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  margin: 12px;
+  transition: opacity 0.2s; /* Smooth transition for opacity */
+}
+
+.circle-button:active {
+  opacity: 0.6; /* Reduced opacity when button is pressed */
+}
+
+#close-button {
+  width: 15px;
+  height: 15px;
+  background-color: #EC6A5E;
+}
+
+.line {
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background-color: white;
+}
+
+.line1 {
+  transform: rotate(0deg);
+}
+
+.line2 {
+  transform: rotate(90deg);
+}
+
+#close-button .line {
+  width: 8px !important;
+}
+
+#close-button .line1 {
+  background-color: black !important;
+  transition: opacity 0.6s;
+  opacity: 0;
+  transform: rotate(45deg);
+}
+
+#close-button .line2 {
+  background-color: black !important;
+  transition: opacity 0.6s;
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+
+#close-button:hover .line1 {
+  opacity: 1;
+}
+
+#close-button:hover .line2 {
+  opacity: 1;
+}
+
+#plus-button .line1 {
+  transform: rotate(0deg);
+}
+
+#plus-button .line2 {
+  transform: rotate(90deg);
+}
+
+#minus-button .line1 {
+  transform: rotate(0deg);
+}
+
+#minus-button .line2 {
+  transform: rotate(0deg);
+}
+
+h2 {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  color: white;
+}
+
+.notes-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 80vh; /* Adjust based on your layout */
+}
+
+.note {
+  padding: 8px;
+  border-bottom: 1px solid grey;
+  width: 96%;
+  padding-top: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 90%;
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: white;
+}
+
+.note-title::placeholder {
+  font-size: 14px;
+  color: grey;
+}
+
+.note-detail {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-detail.visible {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.back-button {
+  background-color: transparent;
+  align-self: start;
+  font-size: 1.2em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 10px;
+  transition: opacity 0.2s; /* Smooth transition for opacity */
+}
+
+.back-button:active {
+  opacity: 0.6; /* Reduced opacity when button is pressed */
+}
+
+.note-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.note-checkbox {
+  margin-right: 10px;
+  display: none;
+}
+
+.note-checkbox.visible {
+  display: inline-block;
+}
+
+.note-headline {
+  display: inline-flex;
+  align-items: start;
+  padding-top: 2%;
+}
+
+#note-title-heading {
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#quicknotes-buttons-container {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#btn_gemini {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0.499); /* Keep the original color for Gemini button */
+  border-radius: 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* checkpoint  */
+
+.bullet-point {
+  background: none;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  position: relative; /* Added to position the bullet symbol */
+}
+
+.bullet-point::before {
+  content: "•";
+  padding-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: white;
+  position: absolute; /* Added to position the bullet symbol correctly */
+  left: 0; /* Adjust as needed for correct positioning */
+}
+
+.bullet-point textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: calc(100% - 30px); /* Adjust width to account for bullet symbol */
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: white;
+  border-radius: 5px;
+  resize: none; 
+  overflow-x: hidden; 
+  overflow-y: hidden; /* Hide vertical scroll */
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+  word-wrap: break-word; /* Break words if necessary */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  margin-left: 30px; /* Ensure text aligns correctly with bullet symbol */
+}
+
+.bullet-point textarea::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgba(255, 255, 255, 0.60);
+}
+
+.bullet-point textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.empty-state {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1em;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.note-title[contenteditable="true"] {
+  border-radius: 5px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.note-title[contenteditable="false"] {
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.note-title-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.note-title-input:focus {
+  outline: none;
+}

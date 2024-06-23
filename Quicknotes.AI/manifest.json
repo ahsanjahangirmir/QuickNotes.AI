@@ -1,0 +1,32 @@
+{
+  "author": "Ahsan J. Mir",
+  "name": "QuickNotes.AI",
+  "version": "1.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "description": "A minimal note-taking sidebar integrated with an AI-summarizer.",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["tabs", "activeTab", "scripting", "storage", "notifications"],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {},
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.js", "content.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
